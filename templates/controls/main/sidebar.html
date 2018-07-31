@@ -3,22 +3,81 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<body>
 		<div th:fragment="sidebar">
-			<div class="sidebox category">
-				<div class="side-caption">
-					<p class="sidebox_title">商品分类</p>
-				</div>
-				<ul id="category" class="side-list clearfix"></ul>
+			<div class="">
+				<ul id="category" class=""></ul>
 			</div>
+			<script type = "text/javascript" > 
+			$(function (){
+			    $.getJSON("js/product_category.json", function (data){
+			      var $categoryList = $("#category");
+			      var categoryHtml = "";
+			      //存储数据的变量 
+			      $categoryList.empty();
+			      //清空内容 
+			      $.each(data, function (infoIndex, info){
+					if(info["parent_id"]==1){
+						$categoryList.append('<li class="categoryList'+info["id"]+'" onclick="categoryChange(this)" onmouseover="categoryChange(this)">'+
+												'<p class="elp-multiline">'+info["name"]+'</p>'+
+											 '<ul class="category2Ul"></ul></li>');
+					}else{
+						$categoryHtml2 = $("#category .categoryList"+info["parent_id"]+" ul");
+						$categoryHtml2.append('<li class="categoryList2'+info["id"]+'">'+
+												'<a class="clearfix" data-id="'+info["parent_id"]+'" id="'+info["id"]+'" onclick="product_list(this)" href="javascript:void(0);">'+
+													'<p class="elp-multiline">'+info["name"]+'</p>'+
+												'</a>'+
+											  '</li>');
+					}
+			      })
+			    })
+			})
+			function categoryChange(obj){
+				$(".category2Ul").hide();
+				$(obj).find("ul").show();
+			}
+			function product_list(obj) {
+				let categoryCode="0000";
+				let category1 = obj.getAttribute("data-id");
+				let category2 = obj.getAttribute("id");
+				for(let i = 0; i < 4-category1.length; i++){
+					categoryCode += 0;
+				}
+				categoryCode += category1;
+				
+				for(let i = 0; i < 4-category2.length; i++){
+					categoryCode += 0;
+				}
+				categoryCode += category2;
+				
+				window.location = site_url_item+"search/productinfobycategory?categoryCode="+categoryCode+"&pageSize=20&page=0&mostPointSort=0&priceSort=0&totalBidSort=0&endDateTimeSort=0";  
+			}
+			</script> 
 			<script type="text/javascript">
+				
 				$(document).ready(function(){
-					var text=["手机/电话","母婴/儿童用品","化妆品/保健品"];
+					var text= ["手机/电话","母婴/儿童用品","化妆品/保健品"];
 					var list_html="";
 					for(var i=0;i<text.length;i++){
 						list_html+='<li><a class="clearfix" href="http://localhost:9091/product-api/page/itembasicshow"><i class="list-marker"></i><div class="label"><div class="label-inr"><p class="elp-multiline">'+text[i]+'</p></div></div></li>';
 					};
-					document.getElementById("category").innerHTML=list_html;
 				});
 			</script>
+			<style type="text/css">
+				.category2Ul{
+					float:right;
+					display:none;
+					position:absolute;
+					left:100px;
+					top:0px;
+					background-color:white;
+					z-index:9999;
+				}
+				#category li{
+					position:relative;
+				}
+				.elp-multiline{
+					cursor:pointer;
+				}
+			</style>
 		</div>
 	</body>
 </html>			

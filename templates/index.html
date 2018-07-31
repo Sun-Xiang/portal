@@ -25,9 +25,9 @@
         <script type="text/javascript">
         function loadPage(i_num,n_num,l_num){
 			$(document).ready(function(){
-				$("#main_id").load(site_url_item+"product/itembasiclistshowfor4?num="+i_num,function(){
-					$("#main_newadd").load(site_url_item + "product/itembasiclistshowfornew4?num="+n_num,function(){
-						$("#main_nearfinish").load(site_url_item + "product/itembasiclistshowforlast4?num="+l_num,function(){
+				$("#main_id").load(site_url_item+"product/itembasiclistshowfor4?num="+i_num+" .main_out",function(){
+					$("#main_newadd").load(site_url_item + "product/itembasiclistshowfornew4?num="+n_num+" .main_out",function(){
+						$("#main_nearfinish").load(site_url_item + "product/itembasiclistshowforlast4?num="+l_num+" .main_out",function(){
 							//导入product里的itembasicshow.js
 							$("#itembasicshow_scriptAdd").html(new_itembasicshow);
 						});
@@ -62,7 +62,7 @@
         <div id="wrapper" class="idx">
             <div id="content" class="clearfix">
             	<div id="itembasicshow_scriptAdd"></div>
-				<!-- <div id="side" th:include="/controls/main/sidebar :: sidebar"></div> -->
+				<div id="side" th:include="/controls/main/sidebar :: sidebar"></div>
 				<h1>按id排序</h1>
 				<div id="main_id" class="over-flow"></div>
 				<div style="margin-bottom:15px;"><span onclick="clickList('i_num')" style="width:100%;cursor:pointer;">查看更多</span></div>
