@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<div id="footer" th:fragment="footer">
+			<div id="foot-upper">
+				<span id="search-foot" th:insert="controls/search :: search"></span>
+			</div>
+			<script type="text/javascript">
+			 	$(document).ready(function(){
+						$("#search-foot").find("div").addClass("foot-search");
+						$("#search-foot").find("input").addClass("footle_input");
+						$("#search-foot").find("button").addClass("submitBtn");
+				});
+			</script>
+			<div id="foot-lower" class="for_DEFAULT clearfix">
+				<div class="foot-lower-container">
+					<table class="foot-table">
+						<tr>
+							<td colspan="4" class="foot-t">品牌</td>
+							<td rowspan="2" class="foot-t">联系</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

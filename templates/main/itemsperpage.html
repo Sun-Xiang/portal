@@ -1,0 +1,47 @@
+<div id="itemmenu"></div>
+<div id="itemcount"></div>	
+
+<script type="text/javascript">
+	$(function(){
+		$("#itemcount").append("搜索结果：13545件");
+		$("#itemmenu").append('<div class="list-menu-left">'+
+			'<select id="itemselect">'+
+			'<option>20</option>'+
+			'<option>30</option>'+
+			'<option>40</option>'+
+			'<option>50</option>'+
+			'</select>'+
+			'</div>'+
+			'<div class="list-menu-right">'+
+			'<button class="silver-btn list-menu-s">推荐顺序</button>'+
+			'<button class="silver-btn list-menu-s">折扣率</button>'+
+			'<button class="silver-btn list-menu-s">新上架</button>'+
+			'<button class="silver-btn list-menu-s">价格</button>'+
+			'<button class="silver-btn list-menu-s">竞拍</button>'+
+			'<button class="silver-btn list-menu-s">剩余时间</button></div>'
+		);
+	});
+
+	$("#itemselect").val(getvalue.st);
+	$("#itemselect").change(function(){
+		window.location.href="./product_list.html?st="+this.value+"&sh="+getvalue.sh+"&so="+getvalue.so+"&sn="+getvalue.sn+"&sp="+getvalue.sp+"&sw="+getvalue.sw+"&sz="+getvalue.sz;
+	});
+	$("#itemmenu button:eq(0)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&sh=1";
+	});
+	$("#itemmenu button:eq(1)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&so=1";
+	});
+	$("#itemmenu button:eq(2)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&sn=1";
+	});
+	$("#itemmenu button:eq(3)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&sp=1";
+	});
+	$("#itemmenu button:eq(4)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&sw=1";
+	});
+	$("#itemmenu button:eq(5)").click(function(){
+		window.location.href="./product_list.html?st="+getvalue.st+"&sz=1";
+	});
+</script>

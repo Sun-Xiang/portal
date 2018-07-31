@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+        <!-- charset -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" th:src="@{js/jquery-1.12.4.min.js}"></script>
+        <script type="text/javascript" th:src="@{js/const.js}"></script>
+        
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="css/style_main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="css/header_footer_main.css" media="all">
+
+        <script type="text/javascript">
+	      	//导入product里的itembasicshow.css
+			document.head.appendChild(new_itembasicshowcss);
+        	//导入product里的jqzoom.js
+			document.head.appendChild(new_jqzoom);
+			//导入product里的itemimg.js 图片自适应
+			document.head.appendChild(new_itemimg);
+		</script>
+        <script type="text/javascript" th:src="@{js/jquery.cookie.js}"></script>
+        <script type="text/javascript" th:src="@{js/user.js}"></script>
+        <script type="text/javascript">
+        function loadPage(i_num,n_num,l_num){
+			$(document).ready(function(){
+				$("#main_id").load(site_url_item+"product/itembasiclistshowfor4?num="+i_num,function(){
+					$("#main_newadd").load(site_url_item + "product/itembasiclistshowfornew4?num="+n_num,function(){
+						$("#main_nearfinish").load(site_url_item + "product/itembasiclistshowforlast4?num="+l_num,function(){
+							//导入product里的itembasicshow.js
+							$("#itembasicshow_scriptAdd").html(new_itembasicshow);
+						});
+					});
+				});
+            });
+        }
+        var i_num = 4;
+        var n_num = 4;
+        var l_num = 4;
+        loadPage(i_num,n_num,l_num);
+        function clickList(new_num){
+        	if(new_num=='i_num'){
+        		i_num=i_num+4;
+        	}
+        	if(new_num=='n_num'){
+        		n_num=n_num+4;
+        	}
+        	if(new_num=='l_num'){
+        		l_num=l_num+4;
+        	}
+        	$("#itembasicshow").remove();
+        	loadPage(i_num,n_num,l_num);
+        }
+        </script>
+        
+         <title>富聿通</title>
+    </head>
+ 
+    <body>
+        <div th:include="header :: header"></div>
+        <div id="wrapper" class="idx">
+            <div id="content" class="clearfix">
+            	<div id="itembasicshow_scriptAdd"></div>
+				<!-- <div id="side" th:include="/controls/main/sidebar :: sidebar"></div> -->
+				<h1>按id排序</h1>
+				<div id="main_id" class="over-flow"></div>
+				<div style="margin-bottom:15px;"><span onclick="clickList('i_num')" style="width:100%;cursor:pointer;">查看更多</span></div>
+				<h1>即将过期</h1>
+				<div id="main_nearfinish" class="over-flow"></div>
+				<div style="margin-bottom:15px;"><span onclick="clickList('l_num')" style="width:100%;cursor:pointer;">查看更多</span></div>
+				<h1>最近添加</h1>
+				<div id="main_newadd" class="over-flow"></div>	
+				<div style="margin-bottom:15px;"><span onclick="clickList('n_num')" style="width:100%;cursor:pointer;">查看更多</span></div>		
+            </div>
+            <div th:include="footer :: footer"></div>
+        </div>
+    </body>
+</html>

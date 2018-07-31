@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<div id="IS_SASP_TARGET" class="header-container" th:fragment="header">	
+			<div class="wide-wrapper">
+				<h1 class="t-logo">
+					<a href="">富聿通</a>
+				</h1>
+				<span id="search-head" th:insert="controls/search :: search"></span>
+				<div class="nomember_btn_sec" id="login_bar">
+					<a class="link-btn orange" href="javascript:void(0);" onclick="itemadd()"><span>出售商品</span></a>
+					<a class="link-btn orange" href="javascript:void(0);" onclick="login()"><span>登录</span></a>
+					<a class="link-btn light_green" href="javascript:void(0);" onclick="register()"><span>免费注册</span></a>
+				</div>
+			</div>
+			<div class="ninki_word">
+				<span><font size="3" color="orige">您觉得无价物品价值超出您的想象...</font></span>
+			</div>
+			<script type="text/javascript">
+				function itemadd() {
+					window.location = site_url_item+"page/itemadd";  
+				}
+				
+				function userInfo() {  
+					let userId=$("#userId").val();
+					window.location = site_url_item+"message/usermessageinfo?userId="+userId;  
+				}
+				
+				function register() {  
+					window.location = site_url_sso+"page/register.html?re="+window.location.href;  
+				}
+				
+				function login() { 
+					window.location = site_url_sso+"page/login.html?re="+window.location.href;  
+				} 
+				
+				$(document).ready(function(){
+						$("#search-head").find("div").addClass("search-container");
+						$("#search-head").find("input").addClass("main-input");
+						$("#search-head").find("button").addClass("btn-orange");
+				});
+			</script>
+		</div>
+	</body>
+</html>

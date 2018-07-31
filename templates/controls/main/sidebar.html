@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<div th:fragment="sidebar">
+			<div class="sidebox category">
+				<div class="side-caption">
+					<p class="sidebox_title">商品分类</p>
+				</div>
+				<ul id="category" class="side-list clearfix"></ul>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					var text=["手机/电话","母婴/儿童用品","化妆品/保健品"];
+					var list_html="";
+					for(var i=0;i<text.length;i++){
+						list_html+='<li><a class="clearfix" href="http://localhost:9091/product-api/page/itembasicshow"><i class="list-marker"></i><div class="label"><div class="label-inr"><p class="elp-multiline">'+text[i]+'</p></div></div></li>';
+					};
+					document.getElementById("category").innerHTML=list_html;
+				});
+			</script>
+		</div>
+	</body>
+</html>			

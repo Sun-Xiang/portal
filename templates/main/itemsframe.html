@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="lang">
+    <head>
+        <!-- charset -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="../../css/style_main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/header_footer_main.css" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/product_list.css" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/page.css" media="all">
+        <link rel="stylesheet" type="text/css" href="../../css/zoom.css" media="all">
+        <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        
+        <title>富聿通</title>
+        <script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="../../js/jqPaginator.js"></script>
+        <script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="../../js/function.js"></script>
+        <script type="text/javascript" src="../../js/jqzoom.js"></script>
+        <script type="text/javascript">
+
+        var getvalue=getValue(window.location.href);
+        var n_url="";
+        if(getvalue.st==""){ 
+            getvalue.st=20; 
+        };
+        n_url+="?st="+getvalue.st;
+        if(getvalue.page==null){ 
+            getvalue.page=1; 
+        }
+        n_url+="&page="+getvalue.page;
+        if(getvalue.sh!=null){ 
+            n_url+="&sh="+getvalue.sh; 
+        }
+        if(getvalue.so!=null){ 
+            n_url+="&so="+getvalue.so; 
+        }
+        if(getvalue.sn!=null){ 
+            n_url+="&sn="+getvalue.sn; 
+        }
+        if(getvalue.sp!=null){ 
+            n_url+="&sp="+getvalue.sp; 
+        }
+        if(getvalue.sw!=null){ 
+            n_url+="&sw="+getvalue.sw; 
+        }
+        if(getvalue.sz!=null){ 
+            n_url+="&sz="+getvalue.sz; 
+        }
+        var provalue=getNewDate();
+        var file_array=new Array();
+        for(var i=0;i<20;i++){										//剩余时间			//竞拍情况
+            file_array[i]=["../../img/5"+i+".jpg","商品名称"+i,"价格"+i,""+i,"收藏情况"+i,i,"用户"+i,"个数"];
+        };
+        var site_url="../../";
+        $(document).ready(function(){
+            $("#header_html").load("../header.html");
+            $("#footer_html").load("../footer.html");
+            $("#side").load("../controls/second/sidebar.html");
+            $("#itemsperpage").load("../main/itemsperpage.html");
+            $("#itembasicshow").load("../item/itembasicshow.html");
+        });
+        </script>
+        <style type="text/css">
+            .item-box .zoom {
+                position: absolute;
+                z-index: 100;
+                right: 0;
+                bottom: 0;
+                width: 29px;
+                height: 29px;
+                background: url(../../img/img02.png) no-repeat -96px -350px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header_html"></div>
+        <div id="p_wrapper">
+            <div id="p_content" class="clearfix">
+            <div id="side"></div>
+            <div id="main">
+                <div id="itemsperpage"></div>
+                <div id="itembasicshow"></div>
+            </div>
+            </div>
+            <div id="footer_html"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $("#list_page").jqPaginator({
+            totalPages: 100,
+            visiblePages: 10,
+            currentPage: getvalue.page,
+
+            first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+            prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+            next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+            last: '<li class="last"><a href="javascript:void(0);">尾页</a></li>',
+            page: '<li class="page"><a href="javascript:void(0);" >{{page}}</a></li>',
+            onPageChange: function (num) {
+                //alert("top"+num);
+            }
+        });
+    </script>
+</html>

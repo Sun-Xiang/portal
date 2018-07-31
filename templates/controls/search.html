@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<form th:fragment="search" action="http://localhost:9091/product-api/search/productinfo" id="side-search" class="clearfix" name="side-search" method="get">
+			<div>
+				<input name="searchParam" placeholder="请输入您要查找商品关键字" title="请输入您要查找商品关键字" autocomplete="off" type="text"></input>
+				<button type="submit" onclick="searchSubmit()">搜索</button>
+			</div>
+			
+			<script>
+				function searchSubmit(){
+					$("#side-search").submit();
+				}
+			</script>
+		</form>
+	</body>
+</html>

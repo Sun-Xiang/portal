@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="lang">
+	<head>
+		<!-- charset -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link rel="stylesheet" type="text/css" href="../../css/style_main.css" media="all">
+		<link rel="stylesheet" type="text/css" href="../../css/header_footer_main.css" media="all">
+
+		<title>富聿通</title>
+		<script type="text/javascript" src="../../js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="../../js/function.js"></script>
+		<script type="text/javascript">
+			var site_url="../../";
+			$(document).ready(function(){
+				$("#header_html").load("../header.html");
+				$("#footer_html").load("../footer.html");
+			});
+		</script>
+	</head>
+	<body>
+		系统登录  			
+		<form id="formlogin" method="post" onsubmit="return false;">	
+			<div>
+				<span>用户名</span>
+				<input type="text" id="loginname" name="username" class="text"  tabindex="1" autocomplete="off"/>
+				<label id="loginname_succeed" class="blank invisible"></label>
+				<label id="loginname_error" class="hide"><b></b></label>
+				<script type="text/javascript">
+					setTimeout(function () {
+						if (!$("#loginname").val()) {
+							$("#loginname").get(0).focus();
+						}
+					}, 0);
+				</script>
+			</div>
+			<div>
+				<span>密码</span>
+				<input type="password" id="nloginpwd" name="password" class="text" tabindex="2" autocomplete="off"/>
+				<label id="loginpwd_succeed" class="blank invisible"></label>
+				<label id="loginpwd_error" class="hide"></label>	
+			</div>
+			<div class="item login-btn2013">
+				<input type="button" class="btn-img btn-entry" id="loginsubmit" value="登录" tabindex="8" clstag="passport|keycount|login|06"/>
+			</div>
+			<span><a href="./register.html" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
+		</form>
+		<script type="text/javascript">
+			//导入member.js
+			new_userjs=document.createElement("script");
+			new_userjs.setAttribute("type","text/javascript");
+			new_userjs.setAttribute("src",site_url+"js/user.js");
+			document.body.appendChild(new_userjs);
+		</script>
+	</body>
+</html>

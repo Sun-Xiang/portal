@@ -1,0 +1,16 @@
+<div class="sidebox category">
+	<div class="side-caption">
+		<p class="sidebox_title">商品分类</p>
+	</div>
+	<ul id="category" class="side-list clearfix"></ul>	
+</div>
+<script type="text/javascript">
+		$(document).ready(function(){
+			var text=["手机/电话","母婴/儿童用品","化妆品/保健品"];
+			var list_html="";
+			for(var i=0;i<text.length;i++){
+				list_html+='<li><a class="clearfix" href="../main/itemsframe.html"><i class="list-marker"></i><div class="label"><div class="label-inr"><p class="elp-multiline">'+text[i]+'</p></div></div></li>';
+			};
+			document.getElementById("category").innerHTML=list_html;
+		});
+</script>
