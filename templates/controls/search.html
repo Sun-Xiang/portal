@@ -2,14 +2,18 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<body>
-		<form th:fragment="search" action="http://localhost:9091/product-api/search/productinfo" id="side-search" class="clearfix" name="side-search" method="get">
-			<div>
-				<input name="searchParam" placeholder="请输入您要查找商品关键字" title="请输入您要查找商品关键字" autocomplete="off" type="text"></input>
-				<button type="submit" onclick="searchSubmit()">搜索</button>
+		<form th:fragment="search" action="" id="side-search" name="side-search" method="get">
+			<div class="search-css">
+				<input name="searchParam" aria-hidden="true" autocomplete="off" tabindex="-1" style="opacity: 1;" placeholder="请输入您要查找商品关键字" title="请输入您要查找商品关键字" type="text"/>
+			</div>
+			<div class="search-btn" onclick="searchSubmit()"><span class="glyphicon glyphicon-search"></span></div>
+			<div class="label-box" style="float:left;">
+				<span class="label label-default">时尚连衣裙</span><span class="label label-default">时尚连衣裙</span>
 			</div>
 			
 			<script>
 				function searchSubmit(){
+					$("#side-search").attr("action",site_url_item + "search/productinfo");
 					$("#side-search").submit();
 				}
 			</script>

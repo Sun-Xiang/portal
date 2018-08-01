@@ -2,20 +2,23 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<body>
-		<div id="IS_SASP_TARGET" class="header-container" th:fragment="header">	
-			<div class="wide-wrapper">
-				<h1 class="t-logo">
-					<a href="">富聿通</a>
-				</h1>
-				<span id="search-head" th:insert="controls/search :: search"></span>
-				<div class="nomember_btn_sec" id="login_bar">
-					<a class="link-btn orange" href="javascript:void(0);" onclick="itemadd()"><span>出售商品</span></a>
-					<a class="link-btn orange" href="javascript:void(0);" onclick="login()"><span>登录</span></a>
-					<a class="link-btn light_green" href="javascript:void(0);" onclick="register()"><span>免费注册</span></a>
+		<div id="IS_SASP_TARGET" class="header-container" th:fragment="header">
+			<div class="login-box">
+				<div class="login-box-inner">
+					<span class="login-news"><b>时尚邮购</b> Nisson 3 , 000元（含税）以上在7-11的店内领取免费运费!</span>
+					<ul id="login_bar">
+						<li><a href="javascript:void(0);" onclick="itemadd()">出售商品</a></li>
+						<li><a href="javascript:void(0);" onclick="login()">登录</a></li>
+						<li><a href="javascript:void(0);" onclick="register()">免费注册</a></li>
+					</ul>
 				</div>
 			</div>
-			<div class="ninki_word">
-				<span><font size="3" color="orige">您觉得无价物品价值超出您的想象...</font></span>
+			<div class="head-search-box">
+				<div class="logo">富聿通</div>
+				<span id="search-head" th:insert="controls/search :: search"></span>
+			</div>
+			<div class="banner-img">
+				<img th:src="@{img/banner01.png}">
 			</div>
 			<script type="text/javascript">
 				function itemadd() {
@@ -35,12 +38,8 @@
 					window.location = site_url_sso+"page/login.html?re="+window.location.href;  
 				} 
 				
-				$(document).ready(function(){
-						$("#search-head").find("div").addClass("search-container");
-						$("#search-head").find("input").addClass("main-input");
-						$("#search-head").find("button").addClass("btn-orange");
-				});
 			</script>
 		</div>
-	</body>
-</html>
+	
+
+
